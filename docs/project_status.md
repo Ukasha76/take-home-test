@@ -1,7 +1,7 @@
 # Project Status
 
 ## Current Phase
-**Phase 3 — API Implementation** ✅ Complete
+**Phase 4 — Frontend Foundation** ✅ Complete
 
 ## Phase Checklist
 
@@ -29,9 +29,16 @@
 - [x] `brandController` — query param validation, 400/404 error responses
 - [x] All endpoints verified against live DB: 52 brands, 5 pages, correct cascade data, price as number
 
-### Phase 4 — Frontend Foundation 🔲
-- [ ] Types, services, utils defined
-- [ ] Component skeletons created
+### Phase 4 — Frontend Foundation ✅
+- [x] Types match API responses exactly (`Brand`, `BrandOptions`, `SkuResult`, response wrappers)
+- [x] `brandService` — 3 typed fetch functions with `encodeURIComponent` on brand param
+- [x] `useBrands` hook — cancellation flag, loading/error state, correct data extraction
+- [x] `formatters` — `formatPrice` (`$XX`), `formatPriceRange` (`$XX – $XX`)
+- [x] `Dropdown` — controlled select, disabled state, placeholder, typed props
+- [x] `BrandCard` skeleton — renders brand name + price range, zero warnings
+- [x] `Pagination` skeleton — correct props interface, placeholder render
+- [x] `HomePage` — grid layout, loading spinner, error state, pagination wired
+- [x] TypeScript strict-mode: zero errors; production build: zero warnings
 
 ### Phase 5 — UI Implementation 🔲
 - [ ] BrandCard with cascading dropdowns
@@ -49,4 +56,4 @@
 None
 
 ## Next Step
-Phase 4/5 — frontend types, services confirmed, then BrandCard and Pagination implementation
+Phase 5 — implement BrandCard with cascading dropdowns and full Pagination component

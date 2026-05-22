@@ -1,5 +1,16 @@
 # Changelog
 
+## Phase 4 — Frontend Foundation
+_2026-05-23_
+
+- Verified all types align with API response shapes
+- `useBrands` hook confirmed: cancellation pattern, correct data extraction
+- `BrandCard` stripped to clean Phase 4 skeleton — renders brand + price range, zero IDE warnings
+- `Dropdown` ui component confirmed: controlled, disabled state, placeholder
+- `Pagination` props interface confirmed correct for Phase 5
+- TypeScript strict-mode: zero errors across all client files
+- Production build clean: 24 modules, 6.62 kB Tailwind CSS bundle
+
 ## Phase 3 — API Implementation
 _2026-05-23_
 
