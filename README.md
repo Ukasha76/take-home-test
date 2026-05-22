@@ -29,7 +29,7 @@ cp .env.example .env
 Edit `.env` and set your database connection:
 ```
 DATABASE_URL=postgresql://your_user:your_password@localhost:5432/brand_cards
-PORT=3001
+PORT=8001
 ```
 
 Install dependencies and start:
@@ -38,7 +38,7 @@ npm install
 npm run dev
 ```
 
-Server runs on `http://localhost:3001`
+Server runs on `http://localhost:8001`
 
 ## Client Setup
 
