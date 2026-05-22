@@ -1,7 +1,7 @@
 # Project Status
 
 ## Current Phase
-**Phase 2 — Backend Foundation** ✅ Complete
+**Phase 3 — API Implementation** ✅ Complete
 
 ## Phase Checklist
 
@@ -23,11 +23,11 @@
 - [x] All three route stubs return `{"data":{}}` — server starts cleanly
 - [x] Unused params prefixed with `_`, no IDE diagnostic warnings
 
-### Phase 3 — API Implementation 🔲
-- [ ] `brandRepository` — all 4 SQL queries implemented
-- [ ] `brandService` — data transformation implemented
-- [ ] `brandController` — all 3 handlers implemented
-- [ ] All endpoints tested manually
+### Phase 3 — API Implementation ✅
+- [x] `brandRepository` — 4 SQL queries: paginated brands, count, length/width pairs, SKU lookup
+- [x] `brandService` — parallel fetch for brands+count, widthsByLength map transform
+- [x] `brandController` — query param validation, 400/404 error responses
+- [x] All endpoints verified against live DB: 52 brands, 5 pages, correct cascade data, price as number
 
 ### Phase 4 — Frontend Foundation 🔲
 - [ ] Types, services, utils defined
@@ -49,4 +49,4 @@
 None
 
 ## Next Step
-Phase 3 — implement all SQL queries, service transforms, and controller handlers
+Phase 4/5 — frontend types, services confirmed, then BrandCard and Pagination implementation

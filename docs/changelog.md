@@ -1,5 +1,13 @@
 # Changelog
 
+## Phase 3 — API Implementation
+_2026-05-23_
+
+- `brandRepository`: 4 SQL queries — paginated brands with MIN/MAX price, COUNT(DISTINCT brand), DISTINCT length/width pairs ordered ASC, SKU lookup by brand+length+width
+- `brandService`: parallel `Promise.all` for brands+count fetch; `widthsByLength` map built from sorted DB pairs; NUMERIC prices converted from pg string to number
+- `brandController`: page/limit defaults + coercion; 400 on missing length/width; 404 on no SKU match
+- Verified: 52 brands, 5 pages, correct cascade options, price as integer, error responses correct
+
 ## Phase 2 — Backend Foundation
 _2026-05-23_
 
