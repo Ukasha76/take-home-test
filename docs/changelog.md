@@ -1,5 +1,14 @@
 # Changelog
 
+## Phase 2 — Backend Foundation
+_2026-05-23_
+
+- Verified full MVC scaffold: controller → service → repository → routes wired correctly
+- Added `try/catch` + `next(err)` to all controller stubs (error handler ready)
+- Prefixed unused stub params with `_` — zero IDE diagnostic warnings
+- TypeScript strict-mode: zero compilation errors
+- All three route stubs confirmed returning `{"data":{}}` on live server
+
 ## Phase 1 — Database Connection
 _2026-05-23_
 

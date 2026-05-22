@@ -1,26 +1,19 @@
-import pool from '../db/pool';
-import { Brand, BrandOptions, SkuResult } from '../types';
-
-// All SQL queries live here — data access layer only
+import { Brand, SkuResult } from '../types';
 
 export const brandRepository = {
-  findBrandsPaginated: async (limit: number, offset: number): Promise<Brand[]> => {
-    // Implemented in Phase 3
+  findBrandsPaginated: async (_limit: number, _offset: number): Promise<Brand[]> => {
     return [];
   },
 
   countBrands: async (): Promise<number> => {
-    // Implemented in Phase 3
     return 0;
   },
 
-  findBrandLengthWidthPairs: async (brand: string): Promise<{ length: number; width: number }[]> => {
-    // Implemented in Phase 3
+  findBrandLengthWidthPairs: async (_brand: string): Promise<{ length: number; width: number }[]> => {
     return [];
   },
 
-  findSku: async (brand: string, length: number, width: number): Promise<SkuResult | null> => {
-    // Implemented in Phase 3
+  findSku: async (_brand: string, _length: number, _width: number): Promise<SkuResult | null> => {
     return null;
   },
 };

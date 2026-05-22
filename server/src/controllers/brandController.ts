@@ -1,23 +1,27 @@
 import { Request, Response, NextFunction } from 'express';
-import { brandService } from '../services/brandService';
-
-// HTTP layer only — parse request, call service, send response
-
-const DEFAULT_LIMIT = 12;
 
 export const brandController = {
-  getBrands: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    // Implemented in Phase 3
-    res.json({ data: {} });
+  getBrands: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      res.json({ data: {} });
+    } catch (err) {
+      next(err);
+    }
   },
 
-  getBrandOptions: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    // Implemented in Phase 3
-    res.json({ data: {} });
+  getBrandOptions: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      res.json({ data: {} });
+    } catch (err) {
+      next(err);
+    }
   },
 
-  getSku: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    // Implemented in Phase 3
-    res.json({ data: {} });
+  getSku: async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      res.json({ data: {} });
+    } catch (err) {
+      next(err);
+    }
   },
 };
