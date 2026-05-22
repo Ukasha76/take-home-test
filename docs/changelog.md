@@ -1,5 +1,14 @@
 # Changelog
 
+## Phase 1 — Database Connection
+_2026-05-23_
+
+- Installed PostgreSQL 15 locally (port 5432)
+- Created `brand_cards` database
+- Restored SQL dump — 948 SKUs across 52 brands loaded
+- Created `server/.env` with `DATABASE_URL`
+- Verified `pg` Pool connection via ts-node test query
+
 ## Phase 0 — Project Setup
 _2026-05-23_
 

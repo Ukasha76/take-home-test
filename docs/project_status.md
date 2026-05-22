@@ -1,7 +1,7 @@
 # Project Status
 
 ## Current Phase
-**Phase 0 — Project Setup** ✅ Complete
+**Phase 1 — Database Connection** ✅ Complete
 
 ## Phase Checklist
 
@@ -13,9 +13,9 @@
 - [x] Documentation skeleton created (CLAUDE.md, README, architecture, spec)
 - [x] Both apps start without errors
 
-### Phase 1 — Database Connection 🔲
-- [ ] SQL dump restored to local PostgreSQL
-- [ ] `pool.ts` connected and verified
+### Phase 1 — Database Connection ✅
+- [x] SQL dump restored to local PostgreSQL (948 SKUs, 52 brands)
+- [x] `pool.ts` connected and verified via ts-node test query
 
 ### Phase 2 — Backend Foundation 🔲
 - [ ] MVC scaffold in place (done in Phase 0)
@@ -47,4 +47,4 @@
 None
 
 ## Next Step
-Phase 1 — restore SQL dump and verify database connection
+Phase 2/3 — implement repository SQL queries and API endpoints
