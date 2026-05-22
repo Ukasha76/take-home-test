@@ -1,5 +1,14 @@
 # Changelog
 
+## Phase 5 — UI Implementation
+_2026-05-23_
+
+- `BrandCard`: options fetched on mount with cancellation flag; `disabled={!options}` covers loading + error states cleanly
+- Cascade: `availableWidths` computed from `widthsByLength[String(selectedLength)]`; length change resets width + sku + error
+- Price display: shows price range until both dropdowns selected; replaced by `$price SKU` on resolve
+- `LoadingSpinner` shown inline during options and SKU fetches
+- `Pagination`: numbered buttons, ← → controls, `disabled` at boundaries, current page blue, returns null for ≤1 page
+
 ## Phase 4 — Frontend Foundation
 _2026-05-23_
 

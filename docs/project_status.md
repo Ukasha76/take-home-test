@@ -1,7 +1,7 @@
 # Project Status
 
 ## Current Phase
-**Phase 4 — Frontend Foundation** ✅ Complete
+**Phase 5 — UI Implementation** ✅ Complete
 
 ## Phase Checklist
 
@@ -40,9 +40,16 @@
 - [x] `HomePage` — grid layout, loading spinner, error state, pagination wired
 - [x] TypeScript strict-mode: zero errors; production build: zero warnings
 
-### Phase 5 — UI Implementation 🔲
-- [ ] BrandCard with cascading dropdowns
-- [ ] Pagination component
+### Phase 5 — UI Implementation ✅
+- [x] BrandCard — options fetched on mount with cancellation flag
+- [x] Length dropdown populated from options.lengths, disabled until options load
+- [x] Width dropdown populated from widthsByLength[selectedLength], disabled until length chosen
+- [x] Length change resets width, SKU, and error state
+- [x] Width change fetches SKU — price range replaced by exact price + SKU code
+- [x] Inline LoadingSpinner during options fetch and SKU fetch
+- [x] ErrorMessage on fetch failure
+- [x] Pagination — numbered page buttons, ← → controls, current page highlighted blue
+- [x] Cascade verified: widths filtered per brand+length, not brand-wide
 
 ### Phase 6 — Integration 🔲
 - [ ] Full end-to-end flow verified in browser
@@ -56,4 +63,4 @@
 None
 
 ## Next Step
-Phase 5 — implement BrandCard with cascading dropdowns and full Pagination component
+Phase 6 — end-to-end integration test in browser, then Phase 7 polish and README verification
