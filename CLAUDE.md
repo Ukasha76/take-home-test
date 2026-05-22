@@ -5,7 +5,7 @@ React + PostgreSQL take-home assessment: a paginated brand card UI with cascadin
 
 ## Tech Stack
 - **Frontend**: React 18, TypeScript, Vite, Tailwind CSS (port 5173)
-- **Backend**: Node.js, Express, TypeScript, `pg` raw SQL (port 3001)
+- **Backend**: Node.js, Express, TypeScript, `pg` raw SQL (port 8001)
 - **Database**: PostgreSQL — single `products` table (sku, brand, length, width, price)
 
 ## Structure

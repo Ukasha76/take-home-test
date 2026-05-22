@@ -14,7 +14,7 @@ const Dropdown = ({ value, onChange, options, placeholder, disabled = false }: D
       disabled={disabled}
       className="border border-gray-300 rounded px-2 py-1 text-sm text-gray-700 bg-white disabled:bg-gray-100 disabled:cursor-not-allowed focus:outline-none focus:ring-1 focus:ring-blue-500"
     >
-      <option value="">{placeholder}</option>
+      <option value="" disabled>{placeholder}</option>
       {options.map((opt) => (
         <option key={opt} value={opt}>{opt}</option>
       ))}

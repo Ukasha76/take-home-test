@@ -11,7 +11,7 @@ export const brandRepository = {
       `SELECT brand, MIN(price) AS min_price, MAX(price) AS max_price
        FROM products
        GROUP BY brand
-       ORDER BY brand ASC
+       ORDER BY CAST(SUBSTRING(brand FROM 7) AS INTEGER) ASC
        LIMIT $1 OFFSET $2`,
       [limit, offset]
     );
