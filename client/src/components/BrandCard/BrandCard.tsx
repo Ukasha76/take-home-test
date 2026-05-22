@@ -62,8 +62,11 @@ const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-      <p className="font-semibold text-gray-800 mb-3">{brand}</p>
+    <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow duration-200">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="font-bold text-gray-900 text-base">{brand}</h2>
+        {loadingOptions && <LoadingSpinner />}
+      </div>
 
       <div className="flex items-center gap-2 flex-wrap">
         <Dropdown
@@ -85,17 +88,19 @@ const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
         <div className="flex items-center gap-2 ml-1">
           {skuResult ? (
             <>
-              <span className="font-semibold text-gray-900">
+              <span className="text-lg font-bold text-gray-900 leading-none">
                 {formatPrice(skuResult.price)}
               </span>
-              <span className="text-sm text-gray-500">{skuResult.sku}</span>
+              <span className="text-xs text-gray-400 font-mono tracking-wide bg-gray-50 border border-gray-100 px-1.5 py-0.5 rounded">
+                {skuResult.sku}
+              </span>
             </>
           ) : (
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-500 font-medium">
               {formatPriceRange(minPrice, maxPrice)}
             </span>
           )}
-          {(loadingOptions || loadingSku) && <LoadingSpinner />}
+          {loadingSku && <LoadingSpinner />}
         </div>
       </div>
 
