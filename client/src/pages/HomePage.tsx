@@ -29,7 +29,13 @@ const HomePage = () => {
 
         {!loading && !error && (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
               {brands.map((brand) => (
                 <BrandCard
                   key={brand.brand}
@@ -39,12 +45,6 @@ const HomePage = () => {
                 />
               ))}
             </div>
-
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
           </>
         )}
       </div>
