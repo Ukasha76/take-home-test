@@ -1,6 +1,6 @@
 import type { BrandOptionsResponse, PaginatedBrandsResponse, SkuResponse } from '../types'
 
-const API_BASE = 'https://take-home-test-ivory.vercel.app/api'
+const API_BASE = `${import.meta.env.VITE_API_URL}/api`
 const BRANDS_PER_PAGE = 12
 
 export const brandService = {
