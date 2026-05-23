@@ -2,13 +2,18 @@ import pool from '../db/pool';
 import { Brand, SkuResult } from '../types';
 
 export const brandRepository = {
-  findBrandsPaginated: async (limit: number, offset: number): Promise<Brand[]> => {
+  findBrandsPaginated: async (
+    limit: number,
+    offset: number
+  ): Promise<{ brands: Brand[]; total: number }> => {
     const { rows } = await pool.query<{
       brand: string;
       min_price: string;
       max_price: string;
+      total_count: string;
     }>(
-      `SELECT brand, MIN(price) AS min_price, MAX(price) AS max_price
+      `SELECT brand, MIN(price) AS min_price, MAX(price) AS max_price,
+              COUNT(*) OVER() AS total_count
        FROM products
        GROUP BY brand
        ORDER BY CAST(NULLIF(REGEXP_REPLACE(brand, '[^0-9]', '', 'g'), '') AS INTEGER) NULLS LAST,
@@ -16,18 +21,14 @@ export const brandRepository = {
        LIMIT $1 OFFSET $2`,
       [limit, offset]
     );
-    return rows.map((row) => ({
-      brand: row.brand,
-      minPrice: Number(row.min_price),
-      maxPrice: Number(row.max_price),
-    }));
-  },
-
-  countBrands: async (): Promise<number> => {
-    const { rows } = await pool.query<{ count: string }>(
-      'SELECT COUNT(DISTINCT brand) AS count FROM products'
-    );
-    return Number(rows[0].count);
+    return {
+      brands: rows.map((row) => ({
+        brand: row.brand,
+        minPrice: Number(row.min_price),
+        maxPrice: Number(row.max_price),
+      })),
+      total: rows.length > 0 ? Number(rows[0].total_count) : 0,
+    };
   },
 
   findBrandLengthWidthPairs: async (

@@ -998,6 +998,19 @@ sku998	Brand-23	37	38	51.00
 ALTER TABLE ONLY public.products
     ADD CONSTRAINT products_pk PRIMARY KEY (sku);
 
+--
+-- Name: products products_brand_length_width_unique; Type: CONSTRAINT; Schema: public; Owner: superuser
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_brand_length_width_unique UNIQUE (brand, length, width);
+
+--
+-- Name: idx_products_brand; Type: INDEX; Schema: public; Owner: superuser
+--
+
+CREATE INDEX idx_products_brand ON public.products USING btree (brand);
+
 
 --
 -- PostgreSQL database dump complete

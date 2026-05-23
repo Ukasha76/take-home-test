@@ -4,10 +4,7 @@ import { BrandOptions, PaginatedBrands, SkuResult } from '../types';
 export const brandService = {
   getBrands: async (page: number, limit: number): Promise<PaginatedBrands> => {
     const offset = (page - 1) * limit;
-    const [brands, total] = await Promise.all([
-      brandRepository.findBrandsPaginated(limit, offset),
-      brandRepository.countBrands(),
-    ]);
+    const { brands, total } = await brandRepository.findBrandsPaginated(limit, offset);
     return {
       brands,
       total,
