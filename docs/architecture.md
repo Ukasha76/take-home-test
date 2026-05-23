@@ -1,7 +1,7 @@
 # Architecture
 
 ## Overview
-Two-app monorepo: a Vite React client (port 5173) proxied to an Express API server (port 3001), backed by a PostgreSQL database.
+Two-app monorepo: a Vite React client (port 5173) proxied to an Express API server (port 8001), backed by a PostgreSQL database.
 
 ## Folder Structure
 

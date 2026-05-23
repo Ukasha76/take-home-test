@@ -48,6 +48,7 @@ const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
   }
 
   const handleWidthChange = (value: string) => {
+    if (!value) return
     const width = Number(value)
     setSelectedWidth(width)
     setError(null)

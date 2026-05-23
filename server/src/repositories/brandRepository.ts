@@ -11,7 +11,8 @@ export const brandRepository = {
       `SELECT brand, MIN(price) AS min_price, MAX(price) AS max_price
        FROM products
        GROUP BY brand
-       ORDER BY CAST(SUBSTRING(brand FROM 7) AS INTEGER) ASC
+       ORDER BY CAST(NULLIF(REGEXP_REPLACE(brand, '[^0-9]', '', 'g'), '') AS INTEGER) NULLS LAST,
+                brand ASC
        LIMIT $1 OFFSET $2`,
       [limit, offset]
     );
