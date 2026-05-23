@@ -6,7 +6,7 @@ import { errorHandler } from './middleware/errorHandler';
 const app = express();
 
 app.use(cors({
-  origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN ?? 'https://take-home-test-tmca.vercel.app',
 }));
 app.use(express.json());
 
