@@ -39,7 +39,11 @@ const HomePage = () => {
           </div>
         )}
 
-        {!loading && !error && (
+        {!loading && !error && brands.length === 0 && (
+          <p className="text-center text-gray-400 py-16">No brands found.</p>
+        )}
+
+        {!loading && !error && brands.length > 0 && (
           <>
             <div className="mb-8">
               <Pagination

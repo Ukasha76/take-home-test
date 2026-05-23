@@ -13,6 +13,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
+          aria-label="Previous page"
           className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-600
                      hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
@@ -23,6 +24,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
           <button
             key={page}
             onClick={() => onPageChange(page)}
+            aria-label={`Page ${page}`}
+            aria-current={page === currentPage ? 'page' : undefined}
             className={`min-w-[2rem] h-8 rounded-lg text-sm font-medium transition-colors ${
               page === currentPage
                 ? 'bg-blue-600 text-white shadow-sm'
@@ -36,6 +39,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
+          aria-label="Next page"
           className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-600
                      hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >

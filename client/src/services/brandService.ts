@@ -1,10 +1,11 @@
 import type { BrandOptionsResponse, PaginatedBrandsResponse, SkuResponse } from '../types'
 
 const API_BASE = '/api'
+const BRANDS_PER_PAGE = 12
 
 export const brandService = {
   getBrands: async (page: number): Promise<PaginatedBrandsResponse> => {
-    const res = await fetch(`${API_BASE}/brands?page=${page}&limit=12`)
+    const res = await fetch(`${API_BASE}/brands?page=${page}&limit=${BRANDS_PER_PAGE}`)
     if (!res.ok) throw new Error('Failed to fetch brands')
     return res.json()
   },

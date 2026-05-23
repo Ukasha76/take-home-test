@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { brandService } from '../../services/brandService'
 import { formatPrice, formatPriceRange } from '../../utils/formatters'
 import type { BrandOptions, SkuResult } from '../../types'
@@ -20,18 +20,25 @@ const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
   const [loadingOptions, setLoadingOptions] = useState(true)
   const [loadingSku, setLoadingSku] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const skuRequestId = useRef(0)
 
   useEffect(() => {
     let cancelled = false
     setLoadingOptions(true)
     setError(null)
 
-    brandService
-      .getBrandOptions(brand)
-      .then(res => { if (!cancelled) setOptions(res.data) })
-      .catch(() => { if (!cancelled) setError('Failed to load options') })
-      .finally(() => { if (!cancelled) setLoadingOptions(false) })
+    const fetchOptions = async () => {
+      try {
+        const res = await brandService.getBrandOptions(brand)
+        if (!cancelled) setOptions(res.data)
+      } catch {
+        if (!cancelled) setError('Failed to load options')
+      } finally {
+        if (!cancelled) setLoadingOptions(false)
+      }
+    }
 
+    fetchOptions()
     return () => { cancelled = true }
   }, [brand])
 
@@ -41,6 +48,7 @@ const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
       : []
 
   const handleLengthChange = (value: string) => {
+    skuRequestId.current++
     setSelectedLength(value ? Number(value) : null)
     setSelectedWidth(null)
     setSkuResult(null)
@@ -51,15 +59,17 @@ const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
     if (!value) return
     const width = Number(value)
     setSelectedWidth(width)
+    setSkuResult(null)
     setError(null)
     if (!selectedLength) return
 
+    const requestId = ++skuRequestId.current
     setLoadingSku(true)
     brandService
       .getSku(brand, selectedLength, width)
-      .then(res => setSkuResult(res.data))
-      .catch(() => setError('Failed to load SKU'))
-      .finally(() => setLoadingSku(false))
+      .then(res => { if (skuRequestId.current === requestId) setSkuResult(res.data) })
+      .catch(() => { if (skuRequestId.current === requestId) setError('Failed to load SKU') })
+      .finally(() => { if (skuRequestId.current === requestId) setLoadingSku(false) })
   }
 
   return (
