@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import { brandService } from '../../services/brandService'
 import { formatPrice, formatPriceRange } from '../../utils/formatters'
-import type { BrandOptions, SkuResult } from '../../types'
+import { useBrandCard } from '../../hooks/useBrandCard'
 import Dropdown from '../ui/Dropdown'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import ErrorMessage from '../ui/ErrorMessage'
@@ -13,64 +11,18 @@ interface BrandCardProps {
 }
 
 const BrandCard = ({ brand, minPrice, maxPrice }: BrandCardProps) => {
-  const [options, setOptions] = useState<BrandOptions | null>(null)
-  const [selectedLength, setSelectedLength] = useState<number | null>(null)
-  const [selectedWidth, setSelectedWidth] = useState<number | null>(null)
-  const [skuResult, setSkuResult] = useState<SkuResult | null>(null)
-  const [loadingOptions, setLoadingOptions] = useState(true)
-  const [loadingSku, setLoadingSku] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const skuRequestId = useRef(0)
-
-  useEffect(() => {
-    let cancelled = false
-    setLoadingOptions(true)
-    setError(null)
-
-    const fetchOptions = async () => {
-      try {
-        const res = await brandService.getBrandOptions(brand)
-        if (!cancelled) setOptions(res.data)
-      } catch {
-        if (!cancelled) setError('Failed to load options')
-      } finally {
-        if (!cancelled) setLoadingOptions(false)
-      }
-    }
-
-    fetchOptions()
-    return () => { cancelled = true }
-  }, [brand])
-
-  const availableWidths =
-    selectedLength && options
-      ? (options.widthsByLength[String(selectedLength)] ?? [])
-      : []
-
-  const handleLengthChange = (value: string) => {
-    skuRequestId.current++
-    setSelectedLength(value ? Number(value) : null)
-    setSelectedWidth(null)
-    setSkuResult(null)
-    setError(null)
-  }
-
-  const handleWidthChange = (value: string) => {
-    if (!value) return
-    const width = Number(value)
-    setSelectedWidth(width)
-    setSkuResult(null)
-    setError(null)
-    if (!selectedLength) return
-
-    const requestId = ++skuRequestId.current
-    setLoadingSku(true)
-    brandService
-      .getSku(brand, selectedLength, width)
-      .then(res => { if (skuRequestId.current === requestId) setSkuResult(res.data) })
-      .catch(() => { if (skuRequestId.current === requestId) setError('Failed to load SKU') })
-      .finally(() => { if (skuRequestId.current === requestId) setLoadingSku(false) })
-  }
+  const {
+    options,
+    selectedLength,
+    selectedWidth,
+    skuResult,
+    availableWidths,
+    loadingOptions,
+    loadingSku,
+    error,
+    handleLengthChange,
+    handleWidthChange,
+  } = useBrandCard(brand)
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow duration-200">

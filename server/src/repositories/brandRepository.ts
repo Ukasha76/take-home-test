@@ -35,7 +35,7 @@ export const brandRepository = {
     brand: string
   ): Promise<{ length: number; width: number }[]> => {
     const { rows } = await pool.query<{ length: number; width: number }>(
-      `SELECT DISTINCT length, width
+      `SELECT length, width
        FROM products
        WHERE brand = $1
        ORDER BY length ASC, width ASC`,

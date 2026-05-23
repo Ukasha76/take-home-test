@@ -9,6 +9,11 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
 }));
 app.use(express.json());
+
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+
 app.use('/api', routes);
 app.use(errorHandler);
 

@@ -1,7 +1,7 @@
 # Project Status
 
 ## Current Phase
-**Phase 5 — UI Implementation** ✅ Complete
+**Phase 7 — Polish** ✅ Complete
 
 ## Phase Checklist
 
@@ -51,16 +51,21 @@
 - [x] Pagination — numbered page buttons, ← → controls, current page highlighted blue
 - [x] Cascade verified: widths filtered per brand+length, not brand-wide
 
-### Phase 6 — Integration 🔲
-- [ ] Full end-to-end flow verified in browser
+### Phase 6 — Integration ✅
+- [x] Full end-to-end flow verified in browser
+- [x] All three API endpoints tested against live DB
+- [x] Cascade: widths filtered per brand+length pair
 
-### Phase 7 — Polish 🔲
-- [ ] Price formatting, sorted dropdowns
-- [ ] Loading/error states
-- [ ] README verified on fresh setup
+### Phase 7 — Polish ✅
+- [x] Price formatting ($XX), sorted dropdowns (ascending)
+- [x] Loading/error states: spinner during options + SKU fetch, inline error message
+- [x] Sticky header, card hover effects, custom dropdown arrow, refined pagination
+- [x] AppError class + typed error handler
+- [x] useBrandCard hook extracted; BrandCard refactored to pure renderer
+- [x] README verified on fresh setup
 
 ## Known Issues
 None
 
 ## Next Step
-Phase 6 — end-to-end integration test in browser, then Phase 7 polish and README verification
+Project complete. All phases closed.

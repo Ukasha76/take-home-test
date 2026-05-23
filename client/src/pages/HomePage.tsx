@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useBrands } from '../hooks/useBrands'
 import BrandCard from '../components/BrandCard'
 import Pagination from '../components/Pagination'
+import LoadingSpinner from '../components/ui/LoadingSpinner'
+import ErrorMessage from '../components/ui/ErrorMessage'
 
 const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -27,15 +29,13 @@ const HomePage = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {loading && (
           <div className="flex justify-center items-center h-64">
-            <div className="w-9 h-9 border-[3px] border-blue-600 border-t-transparent rounded-full animate-spin" />
+            <LoadingSpinner size="lg" />
           </div>
         )}
 
         {error && (
           <div className="flex items-center justify-center h-64">
-            <div className="bg-red-50 border border-red-200 rounded-xl px-6 py-4 text-sm text-red-600">
-              {error}
-            </div>
+            <ErrorMessage message={error} variant="page" />
           </div>
         )}
 

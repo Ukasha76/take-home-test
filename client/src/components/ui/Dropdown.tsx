@@ -13,6 +13,7 @@ const Dropdown = ({ value, onChange, options, placeholder, disabled = false }: D
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
+        aria-label={placeholder}
         className="appearance-none border border-gray-300 rounded-lg px-3 py-1.5 pr-7 text-sm text-gray-700 bg-white
                    disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed
                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
