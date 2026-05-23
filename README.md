@@ -1,3 +1,5 @@
+https://github.com/user-attachments/assets/92e38898-017d-422e-9e0f-33ae8d9a962f
+
 # Brand Cards Interface
 
 A full-stack PERN application that displays paginated product brand cards with cascading dimension dropdowns. Selecting a length and width resolves to a specific SKU and its exact price.
